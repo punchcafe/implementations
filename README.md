@@ -12,6 +12,7 @@ This repository contains (will contain) implementations of:
 - [ ] Hash Set
 - [ ] Linked List
 - [ ] Array List
+- [ ] Tree map
 
 #### Algorithms
 
