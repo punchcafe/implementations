@@ -68,6 +68,15 @@ class LinkedList<T> /*implements List<T>*/ {
     public boolean isEmpty(){
         return !(length > 0);
     }
+
+    public boolean contains(Object object){
+        ListElement<T> target = this.head;
+        for (int i = 0; i < this.length ; i++){
+            if(object.equals(target.getElement())) return true;
+            target = target.next();
+        }
+        return false;
+    }
 }
 
 class ListElement<T> {

@@ -55,4 +55,17 @@ class LinkedListTest {
         linkedList.add("Hello there");
         assertFalse(linkedList.isEmpty());
     }
+
+    @Test void containsTest(){
+        LinkedList<String> linkedList = new LinkedList<>("Hello");
+        linkedList.add("world");
+        linkedList.add("!");
+        assertTrue(linkedList.contains("world"));
+        assertFalse(linkedList.contains("worl"));
+        assertFalse(linkedList.contains(5));
+    }
+
+    @Test void equalsTest(){
+
+    }
 }
