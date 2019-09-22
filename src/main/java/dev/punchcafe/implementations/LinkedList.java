@@ -1,6 +1,8 @@
 package dev.punchcafe.implementations;
 
-class LinkedList<T> {
+import java.util.List;
+
+class LinkedList<T> /*implements List<T>*/ {
     private int length;
     private ListElement<T> head;
     //recursion would be prettier but list length would be restricted to recursion depth.
@@ -57,6 +59,14 @@ class LinkedList<T> {
             System.out.println("Index out of list range");
         }
         return target.getElement();
+    }
+
+    public int size() {
+        return length;
+    }
+
+    public boolean isEmpty(){
+        return !(length > 0);
     }
 }
 

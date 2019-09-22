@@ -5,7 +5,7 @@ package dev.punchcafe.implementations;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
     @Test void canAppendToWithList() {
@@ -29,6 +29,17 @@ class LinkedListTest {
         assertEquals( "!", linkedList.get(2));
     }
 
+    @Test void canRetrieveSize() {
+        LinkedList<String> linkedList = new LinkedList<>("Hello");
+        linkedList.add("world");
+        linkedList.add("!");
+        assertEquals( linkedList.size(), 3);
+        LinkedList<Integer> zeroArgsInitList = new LinkedList<>();
+        zeroArgsInitList.add(1);
+        zeroArgsInitList.add(2);
+        assertEquals( zeroArgsInitList.size(), 2);
+    }
+
     @Test void canDeleteFromList() {
         LinkedList<String> linkedList = new LinkedList<>("Hello");
         linkedList.add("world");
@@ -36,5 +47,12 @@ class LinkedListTest {
         assertEquals( "world", linkedList.get(1));
         linkedList.delete(1);
         assertEquals("1", linkedList.get(1));
+    }
+
+    @Test void isEmptyTest(){
+        LinkedList<String> linkedList = new LinkedList<>();
+        assertTrue(linkedList.isEmpty());
+        linkedList.add("Hello there");
+        assertFalse(linkedList.isEmpty());
     }
 }
