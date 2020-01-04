@@ -3,61 +3,89 @@
  */
 package dev.punchcafe.implementations;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
-    @Test void canAppendToWithList() {
-        LinkedList<String> linkedList = new LinkedList<>();
-        linkedList.add("Hello");
-        linkedList.add("world");
-        linkedList.add("!");
 
-        assertEquals( "Hello", linkedList.get(0));
-        assertEquals( "world", linkedList.get(1));
-        assertEquals( "!", linkedList.get(2));
+    private LinkedList<String> linkedList;
+
+    @BeforeEach
+    void beforeEach() {
+        linkedList = new LinkedList<>("Hello");
     }
 
-    @Test void canAppendToWithWhenInitialisedWithArgList() {
-        LinkedList<String> linkedList = new LinkedList<>("Hello");
-        linkedList.add("world");
-        linkedList.add("!");
+    @Test
+    void canAppendToWithList() {
+        LinkedList<String> arglessLinkedList = new LinkedList<>();
+        arglessLinkedList.add("Hello");
+        arglessLinkedList.add("world");
+        arglessLinkedList.add("!");
 
-        assertEquals( "Hello", linkedList.get(0));
-        assertEquals( "world", linkedList.get(1));
-        assertEquals( "!", linkedList.get(2));
+        assertEquals("Hello", arglessLinkedList.get(0));
+        assertEquals("world", arglessLinkedList.get(1));
+        assertEquals("!", arglessLinkedList.get(2));
     }
 
-    @Test void canRetrieveSize() {
-        LinkedList<String> linkedList = new LinkedList<>("Hello");
+    @Test
+    void canAppendToWithWhenInitialisedWithArgList() {
         linkedList.add("world");
         linkedList.add("!");
-        assertEquals( linkedList.size(), 3);
+
+        assertEquals("Hello", linkedList.get(0));
+        assertEquals("world", linkedList.get(1));
+        assertEquals("!", linkedList.get(2));
+    }
+
+    @Test
+    void canRetrieveSize() {
+        linkedList.add("world");
+        linkedList.add("!");
+        assertEquals(linkedList.size(), 3);
         LinkedList<Integer> zeroArgsInitList = new LinkedList<>();
         zeroArgsInitList.add(1);
         zeroArgsInitList.add(2);
-        assertEquals( zeroArgsInitList.size(), 2);
+        assertEquals(zeroArgsInitList.size(), 2);
     }
 
-    @Test void canDeleteFromList() {
-        LinkedList<String> linkedList = new LinkedList<>("Hello");
+    @Test
+    void canDeleteFromList() {
         linkedList.add("world");
         linkedList.add("!");
-        assertEquals( "world", linkedList.get(1));
+        assertEquals("world", linkedList.get(1));
         linkedList.delete(1);
-        assertEquals("1", linkedList.get(1));
+        assertEquals("!", linkedList.get(1));
     }
 
-    @Test void isEmptyTest(){
-        LinkedList<String> linkedList = new LinkedList<>();
-        assertTrue(linkedList.isEmpty());
-        linkedList.add("Hello there");
-        assertFalse(linkedList.isEmpty());
+    @Test
+    void canDeleteFromListAndReturnCurrectSize() {
+        linkedList.add("world");
+        linkedList.add("!");
+        assertEquals("world", linkedList.get(1));
+        assertEquals(linkedList.size(), 3);
+        linkedList.delete(1);
+        assertEquals("!", linkedList.get(1));
+        assertEquals(linkedList.size(), 2);
     }
 
-    @Test void containsTest(){
-        LinkedList<String> linkedList = new LinkedList<>("Hello");
+    @Test
+    void canDeleteFromListWithEdgeCases() {
+        linkedList.delete(0);
+        assertEquals("!", linkedList.get(0));
+    }
+
+    @Test
+    void isEmptyTest() {
+        LinkedList<String> arglessLinkedList = new LinkedList<>();
+        assertTrue(arglessLinkedList.isEmpty());
+        arglessLinkedList.add("Hello there");
+        assertFalse(arglessLinkedList.isEmpty());
+    }
+
+    @Test
+    void containsTest() {
         linkedList.add("world");
         linkedList.add("!");
         assertTrue(linkedList.contains("world"));
@@ -65,7 +93,8 @@ class LinkedListTest {
         assertFalse(linkedList.contains(5));
     }
 
-    @Test void equalsTest(){
-
+    @Test
+    void equalsTest() {
+        //assertTrue();
     }
 }

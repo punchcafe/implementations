@@ -1,8 +1,11 @@
 package dev.punchcafe.implementations;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
-class LinkedList<T> /*implements List<T>*/ {
+class LinkedList<T> implements List<T> {
     private int length;
     private ListElement<T> head;
     //recursion would be prettier but list length would be restricted to recursion depth.
@@ -16,7 +19,7 @@ class LinkedList<T> /*implements List<T>*/ {
         this.length = 0;
     }
 
-    public void add(T element) {
+    public boolean add(T element) {
         if (length == 0) {
             this.head = new ListElement<>(element);
         } else {
@@ -27,26 +30,30 @@ class LinkedList<T> /*implements List<T>*/ {
             target.setNext(new ListElement<>(element));
         }
         this.length = this.length + 1;
+        return true;
 
     }
 
     public void delete(int index){
         //need to check this is garbage collected
-        ListElement<T> target = this.head;
+        if(this.length <= 2){
+
+        }
+        ListElement<T> iteratedElement = this.head;
         ListElement<T> before = null;
         ListElement<T> after = null;
-        for (int i = 1; i <= index; i++) {
-            if( i == index -1 ){
-                //this will probably break because it refferences the refference?
-                before = target;
-            }else if(i == index){
-                after = target.next();
+        for (int i = 0; i <= index; i++) {
+            if(i == index-1){
+                before = iteratedElement;
+            } else if (i == index){
+                after = iteratedElement.next();
+                iteratedElement = null;
+                break;
             }
-            target = target.next();
+            iteratedElement = iteratedElement.next();
         }
         before.setNext(after);
-
-
+        this.length = this.length - 1;
     }
 
     public T get(int index) {
@@ -60,6 +67,8 @@ class LinkedList<T> /*implements List<T>*/ {
         }
         return target.getElement();
     }
+
+
 
     public int size() {
         return length;
@@ -76,6 +85,97 @@ class LinkedList<T> /*implements List<T>*/ {
             target = target.next();
         }
         return false;
+    }
+
+    //TODO
+
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+    @Override
+    public T set(int index, T element) {
+        return null;
+    }
+
+    @Override
+    public void add(int index, T element) {
+
+    }
+
+    @Override
+    public T remove(int index) {
+        return null;
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public ListIterator<T> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<T> listIterator(int index) {
+        return null;
+    }
+
+    @Override
+    public List<T> subList(int fromIndex, int toIndex) {
+        return null;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T1> T1[] toArray(T1[] a) {
+        return null;
     }
 }
 
