@@ -12,7 +12,7 @@ public class EventBus {
     }
 
     public EventBus publishEvent(Event e){
-        subscribers.stream().forEach(subscriber -> subscriber.publishEvent(e));
+        subscribers.forEach(subscriber -> subscriber.publishEvent(e));
         return this;
     }
 }

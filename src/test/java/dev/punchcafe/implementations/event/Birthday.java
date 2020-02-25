@@ -8,4 +8,9 @@ public class Birthday implements Event {
     public LocalDateTime getTimeStamp() {
         return LocalDateTime.now();
     }
+
+    @Override
+    public String message() {
+        return "It's your birthday!";
+    }
 }
