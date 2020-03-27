@@ -1,5 +1,6 @@
 package dev.punchcafe.implementations;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class HashMap<K,V> implements Map<K,V>{
@@ -15,6 +16,10 @@ public class HashMap<K,V> implements Map<K,V>{
         for(int i = 0; i < requiredElements; i++){
             list.add(null);
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(LocalDateTime.now().toString());
     }
 
     public HashMap(){
