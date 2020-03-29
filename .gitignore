@@ -1,4 +1,11 @@
 build/*
-gradle/*
+java/build/*
+cpp/build/*
+java/gradle/*
+cpp/gradle/*
 .idea/*
 .gradle/*
+java/.idea/*
+java/.gradle/*
+cpp/.idea/*
+cpp/.gradle/*
