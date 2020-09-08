@@ -13,6 +13,7 @@ This repository contains (will contain) implementations of:
 - [ ] Linked List
 - [ ] Array List
 - [ ] Tree map
+- [ ] Heap
 - [ ] Smart Pointer
 - [ ] Graphs & graph traversial
 
